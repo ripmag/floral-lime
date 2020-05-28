@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <code>96389445272</code>
+    <name>Настройки для модуля оплаты Platon</name>
+    <version>1.0</version>
+    <author>web.developer718@gmail.com</author>
+    <link></link>
+    <file path="catalog/model/checkout/order.php">
+        <operation>
+            <search>
+                <![CDATA["INSERT INTO `" . DB_PREFIX . "order` SET invoice_prefix]]>
+            </search>
+            <add position="replace">
+                <![CDATA["INSERT INTO `" . DB_PREFIX . "order` SET order_status_id = 1, invoice_prefix]]>
+            </add>
+        </operation>
+    </file>
+	<file path="catalog/controller/checkout/guest.php">
+        <operation>
+            <search>
+                <![CDATA[$this->session->data['payment_address']['zone_id'] = $this->request->post['zone_id'];]]>
+            </search>
+            <add position="replace">
+                <![CDATA[
+					if(isset($this->request->post['telephone'])){
+						$this->session->data['payment_address']['phone'] = $this->request->post['telephone'];
+					}else{
+						$this->session->data['payment_address']['phone'] = '';
+					}
+					if(isset($this->request->post['email'])){
+						$this->session->data['payment_address']['email'] = $this->request->post['email'];
+					}else{
+						$this->session->data['payment_address']['email'] = '';
+					}
+				]]>
+            </add>
+        </operation>
+    </file>
+</modification>

@@ -1,0 +1,16 @@
+<form action="{{ action }}" id="platon_checkout" name="platon_checkout" method="post">
+    <input type="hidden" name="key" value="{{ key }}" />
+    <input type="hidden" name="order" value="{{ order }}" />
+    <input type="hidden" name="url" value="{{ url }}" />
+
+    <input type="hidden" name="phone" value="{{ phone }}" />
+    <input type="hidden" name="email" value="{{ email }}" />
+
+    <input type="hidden" name="data" value="{{ data }}" />
+    <input type="hidden" name="sign" value="{{ sign }}" />
+    <div class="buttons">
+        <div class="pull-right">
+            <input type="submit" class="btn btn-primary" value="{{ button_confirm }}">
+        </div>
+    </div>
+</form>
